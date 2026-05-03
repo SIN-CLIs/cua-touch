@@ -191,13 +191,15 @@ class CuATouch:
 
     def wait_for_element(self, pid: int, window_id: int,
                          element_label: str, timeout: float = 10.0) -> int | None:
+        import re as _re
+        pattern = _re.compile(r'\b' + _re.escape(element_label) + r'\b', _re.IGNORECASE)
         start = time.time()
         while time.time() - start < timeout:
             state = self.get_window_state(pid, window_id)
             elements = state.get("elements", [])
             for elem in elements:
                 label = elem.get("label", "")
-                if element_label.lower() in label.lower():
+                if pattern.search(label):
                     return elem.get("element_index")
             time.sleep(0.5)
         return None
