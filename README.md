@@ -1,5 +1,7 @@
 # cua-touch — macOS Accessibility-driven Computer-Use Agent
 
+[![CI](https://github.com/SIN-CLIs/cua-touch/actions/workflows/ci.yml/badge.svg)](https://github.com/SIN-CLIs/cua-touch/actions/workflows/ci.yml)
+
 > AX tree snapshot, element click/type by index, window_id targeting for popup automation.
 > Python CLI + MCP stdio server.
 

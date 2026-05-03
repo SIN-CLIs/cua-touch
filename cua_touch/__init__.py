@@ -46,7 +46,7 @@ class CuATouch:
         ]:
             if os.path.exists(candidate):
                 return candidate
-        raise CuAError(f"cua-driver binary not found")
+        raise CuAError("cua-driver binary not found")
 
     def connect(self, retries: int = DEFAULT_RETRY_COUNT) -> bool:
         for attempt in range(retries):
