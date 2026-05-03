@@ -162,8 +162,12 @@ class CuATouch:
                 if paren_match:
                     label = paren_match.group(1)
                 else:
-                    quote_match = re.match(r'"([^"]*)"', raw)
-                    label = quote_match.group(1) if quote_match else raw
+                    quote_match = re.match(r'=\s*"([^"]*)"', raw)
+                    if quote_match:
+                        label = quote_match.group(1)
+                    else:
+                        quote_match = re.match(r'"([^"]*)"', raw)
+                        label = quote_match.group(1) if quote_match else raw
                 elements.append({"element_index": idx, "role": role, "label": label.strip()})
         return elements
 
