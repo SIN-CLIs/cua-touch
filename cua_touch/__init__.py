@@ -156,8 +156,15 @@ class CuATouch:
                 role = m.group(2)
                 rest = m.group(3).strip()
                 label_match = re.match(r"(.*?)\s+actions=", rest)
-                label = label_match.group(1).strip() if label_match else rest.strip()
-                elements.append({"element_index": idx, "role": role, "label": label})
+                raw = label_match.group(1).strip() if label_match else rest.strip()
+                raw = re.sub(r'^:\s*', '', raw)
+                paren_match = re.search(r'\(([^)]+)\)', raw)
+                if paren_match:
+                    label = paren_match.group(1)
+                else:
+                    quote_match = re.match(r'"([^"]*)"', raw)
+                    label = quote_match.group(1) if quote_match else raw
+                elements.append({"element_index": idx, "role": role, "label": label.strip()})
         return elements
 
     def click(self, pid: int, window_id: int, element_index: int,
