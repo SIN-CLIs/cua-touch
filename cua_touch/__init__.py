@@ -88,11 +88,22 @@ class CuATouch:
                 if self.debug:
                     print(f"[cua-touch] {method} failed: {result.stderr}")
                 return None
-            return json.loads(result.stdout)
+            stdout = result.stdout.strip()
+            try:
+                return json.loads(stdout)
+            except json.JSONDecodeError:
+                success_markers = ["✅", "Performed", "Done", "OK", "Success"]
+                if any(m in stdout for m in success_markers):
+                    return {"success": True, "raw_output": stdout}
+                idx = stdout.find("{")
+                if idx >= 0:
+                    try:
+                        return json.loads(stdout[idx:])
+                    except:
+                        pass
+                raise CuAError(f"Invalid JSON from {method}: {stdout[:200]}")
         except subprocess.TimeoutExpired:
             raise CuAError(f"Timeout calling {method}")
-        except json.JSONDecodeError:
-            raise CuAError(f"Invalid JSON from {method}: {result.stdout[:200]}")
 
     def _call(self, method: str, params: dict[str, Any],
               retries: int = DEFAULT_RETRY_COUNT) -> dict[str, Any]:
