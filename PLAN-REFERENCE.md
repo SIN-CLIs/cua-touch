@@ -2,7 +2,7 @@
 
 Canonical Plan: [stealth-runner/MASTER-PLAN-2026-05-02.md](https://github.com/SIN-CLIs/stealth-runner/blob/main/MASTER-PLAN-2026-05-02.md)
 
-Alle 7 Repos der Stealth-Quad referenzieren diesen Plan.
+Alle 7 Repos der Stealth Suite referenzieren diesen Plan.
 
 ```bash
 # Canonical plan location
@@ -11,7 +11,7 @@ Alle 7 Repos der Stealth-Quad referenzieren diesen Plan.
 
 ---
 
-## Stealth-Quad Plan Architecture
+## Stealth Suite Plan Architecture
 
 ```
 MASTER-PLAN (stealth-runner)

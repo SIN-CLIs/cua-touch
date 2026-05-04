@@ -1,7 +1,7 @@
 # cua-touch — macOS Accessibility-driven Computer-Use Agent
 
 > **AX-tree snapshot, element click/type by index, window_id targeting for popup automation.**
-> Python CLI + MCP stdio server. The Popup-Action-Layer der Stealth-Quad.
+> Python CLI + MCP stdio server. The Popup-Action-Layer der Stealth Suite.
 
 ---
 
@@ -19,7 +19,7 @@ cua-touch targetiert Popup-Fenster via `window_id` — keine Koordinaten, keine 
 
 ---
 
-## 🔗 Stealth-Quad — Tool-Rollen
+## 🔗 Stealth Suite — Tool-Rollen
 
 | Tool | Kontext | Command |
 |------|---------|---------|
