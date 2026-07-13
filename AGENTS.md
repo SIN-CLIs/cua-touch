@@ -1,11 +1,13 @@
-# cua-touch — macOS Accessibility-driven Computer-Use Agent
+---
+content: |
+# cua-touch - macOS Accessibility-driven Computer-Use Agent
 
 > **AX-tree snapshot, element click/type by index, window_id targeting for popup automation.**
 > Python CLI + MCP stdio server. The Popup-Action-Layer der Stealth Suite.
 
 ---
 
-## 🎯 Was ist cua-touch?
+##  Was ist cua-touch?
 
 ```
 cua-driver call list_windows '{}'
@@ -15,11 +17,11 @@ cua-driver call set_value '{"pid":12345,"window_id":W1,"element_index":25,"value
 ```
 
 **Das einzige Tool das Popups bedienen kann.** skylight-cli cached NUR das Hauptfenster.
-cua-touch targetiert Popup-Fenster via `window_id` — keine Koordinaten, keine Maus.
+cua-touch targetiert Popup-Fenster via `window_id` - keine Koordinaten, keine Maus.
 
 ---
 
-## 🔗 Stealth Suite — Tool-Rollen
+##  Stealth Suite - Tool-Rollen
 
 | Tool | Kontext | Command |
 |------|---------|---------|
@@ -33,7 +35,7 @@ Immer das richtige Tool für den richtigen Kontext. Siehe `docs/TOOL-ROLES.md`.
 
 ---
 
-## ⚡ Quick Start
+##  Quick Start
 
 ```bash
 # Daemon starten (einmalig pro Session)
@@ -54,7 +56,7 @@ cua-touch call set_value '{"pid":12345,"window_id":W1,"element_index":25,"value"
 
 ---
 
-## 📋 Google OAuth Flow (cua-touch only!)
+##  Google OAuth Flow (cua-touch only!)
 
 ```bash
 PID=$(pgrep -f "Google Chrome.app/Contents/MacOS/Google Chrome$" | head -1)
@@ -95,7 +97,7 @@ cua-touch call click "{\"pid\":$PID,\"window_id\":$WID,\"element_index\":41,\"ac
 
 ---
 
-## 🛠️ MCP Server Mode
+## ️ MCP Server Mode
 
 ```bash
 # MCP stdio server (für Python/Go/any language)
@@ -109,18 +111,18 @@ JSON-RPC 2.0 interface. Methods: `list_windows`, `get_window_state`, `click`, `s
 
 ---
 
-## 🚫 BANNED Patterns
+##  BANNED Patterns
 
-- ❌ `skylight-cli` in Popup-Kontext
-- ❌ Koordinaten raten (`--x --y`)
-- ❌ Ohne Daemon (`cua-touch serve &`) Popup-Operationen
-- ❌ Element-Index aus skylight-cli für Popup nutzen
+-  `skylight-cli` in Popup-Kontext
+-  Koordinaten raten (`--x --y`)
+-  Ohne Daemon (`cua-touch serve &`) Popup-Operationen
+-  Element-Index aus skylight-cli für Popup nutzen
 
 ---
 
-## 🔗 Related
+##  Related
 
-- [stealth-runner](https://github.com/SIN-CLIs/stealth-runner) — Orchestrator
-- [skylight-cli](https://github.com/SIN-CLIs/skylight-cli) — Hauptfenster ACT layer
-- [playstealth-cli](https://github.com/SIN-CLIs/playstealth-cli) — Browser HIDE layer
-- [docs/TOOL-ROLES.md](docs/TOOL-ROLES.md) — Complete tool-role separation
+- [stealth-runner](https://github.com/SIN-CLIs/stealth-runner) - Orchestrator
+- [skylight-cli](https://github.com/SIN-CLIs/skylight-cli) - Hauptfenster ACT layer
+- [playstealth-cli](https://github.com/SIN-CLIs/playstealth-cli) - Browser HIDE layer
+- [docs/TOOL-ROLES.md](docs/TOOL-ROLES.md) - Complete tool-role separation
